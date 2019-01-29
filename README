@@ -1,0 +1,45 @@
+1. Install composer dependencies by running command:
+
+    $ composer install
+
+2. To build docker containers run command:
+
+    $ docker-compose up
+
+3. To run doctrine schema create tool run command:
+
+    $ docker-compose run php bin/console doctrine:schema:create
+
+4. App is running at http://localhost:81
+
+
+Appendix 1: cURL Command to simulate REST API requests:
+
+# Get All Gnomes:
+    $ curl -X GET \
+        http://localhost:81/api/v1/gnomes \
+        -H 'cache-control: no-cache'
+
+# Get Single Gnome:
+    $ curl -X GET \
+        http://localhost:81/api/v1/gnomes/1 \
+        -H 'cache-control: no-cache'
+
+# Create Gnome:
+     $ curl -X POST \
+        'http://localhost:81/api/v1/gnomes' \
+        -H 'cache-control: no-cache' \
+        -H 'content-type: application/x-www-form-urlencoded' \
+        -d 'name=Gnome%20Name&age=25&strength=50&avatar=gnome1.png'
+
+# Update Gnome:
+    $ curl -X PUT \
+        http://localhost:81/api/v1/gnomes/1 \
+        -H 'cache-control: no-cache' \
+        -H 'content-type: application/x-www-form-urlencoded' \
+        -d 'name=Gnome%20New%20Name&age=40&strength=65&avatar=gnome2.png'
+
+# Delete Gnome:
+    $ curl -X DELETE \
+        http://localhost:81/api/v1/gnomes/1 \
+        -H 'cache-control: no-cache'
