@@ -18,28 +18,33 @@ Appendix 1: cURL Command to simulate REST API requests:
 # Get All Gnomes:
     $ curl -X GET \
         http://localhost:81/api/v1/gnomes \
-        -H 'cache-control: no-cache'
+        -H 'cache-control: no-cache' \
+        --verbose
 
 # Get Single Gnome:
     $ curl -X GET \
         http://localhost:81/api/v1/gnomes/1 \
-        -H 'cache-control: no-cache'
+        -H 'cache-control: no-cache' \
+        --verbose
 
 # Create Gnome:
      $ curl -X POST \
         'http://localhost:81/api/v1/gnomes' \
         -H 'cache-control: no-cache' \
         -H 'content-type: application/x-www-form-urlencoded' \
-        -d 'name=Gnome%20Name&age=25&strength=50&avatar=gnome1.png'
+        -d 'name=Gnome%20Name&age=25&strength=50&avatar=gnome1.png' \
+        --verbose
 
 # Update Gnome:
     $ curl -X PUT \
         http://localhost:81/api/v1/gnomes/1 \
         -H 'cache-control: no-cache' \
         -H 'content-type: application/x-www-form-urlencoded' \
-        -d 'name=Gnome%20New%20Name&age=40&strength=65&avatar=gnome2.png'
+        -d 'name=Gnome%20New%20Name&age=40&strength=65&avatar=gnome2.png' \
+        --verbose
 
 # Delete Gnome:
     $ curl -X DELETE \
         http://localhost:81/api/v1/gnomes/1 \
-        -H 'cache-control: no-cache'
+        -H 'cache-control: no-cache' \
+        --verbose
