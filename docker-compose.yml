@@ -1,0 +1,29 @@
+version: '2'
+services:
+  db:
+      build: .docker/build/mysql
+      restart: always
+      ports:
+        - '3307:3306'
+
+  php:
+    build: .docker/build/php
+    expose:
+      - '9000'
+    depends_on:
+      - db
+    volumes:
+      - ./:/var/www/html/symfony:cached
+      - ./.docker/logs:/var/log
+
+  web:
+    build: .docker/build/nginx
+    restart: always
+    ports:
+      - '81:80'
+    depends_on:
+      - php
+      - db
+    volumes:
+      - ./:/var/www/html/symfony:cached
+      - ./.docker/logs:/var/log/nginx
