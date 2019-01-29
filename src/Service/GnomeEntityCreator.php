@@ -19,15 +19,14 @@ class GnomeEntityCreator
      */
     public function createFromPostRequest(Request $request)
     {
-        $gnome = new Gnome();
-        $gnome
-            ->setName($request->get('name'))
-            ->setAge((int)$request->get('age'))
-            ->setStrength((int)$request->get('strength'))
-            ->setAvatar($request->get('avatar'))
-        ;
+        $data = $request->request;
 
-        return $gnome;
+        return (new Gnome())
+            ->setName($data->get('name'))
+            ->setAge((int)$data->get('age'))
+            ->setStrength((int)$data->get('strength'))
+            ->setAvatar($data->get('avatar'))
+        ;
     }
 
     /**
@@ -37,11 +36,13 @@ class GnomeEntityCreator
      */
     public function createFromPutRequest(Request $request, Gnome $gnome)
     {
+        $data = $request->request;
+
         $gnome
-            ->setName($request->request->get('name'))
-            ->setAge((int)$request->request->get('age'))
-            ->setStrength((int)$request->request->get('strength'))
-            ->setAvatar($request->request->get('avatar'))
+            ->setName($data->get('name'))
+            ->setAge((int)$data->get('age'))
+            ->setStrength((int)$data->get('strength'))
+            ->setAvatar($data->get('avatar'))
         ;
 
         return $gnome;
