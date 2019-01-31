@@ -4,7 +4,7 @@
 
 2. To build docker containers run command:
 
-    $ docker-compose up
+    $ docker-compose up &> /dev/null &
 
 3. To run doctrine schema create tool run command:
 
