@@ -6,7 +6,6 @@ namespace App\Controller;
 use App\Entity\Gnome;
 use App\Service\GnomeEntityCreator;
 use FOS\RestBundle\Controller\Annotations as Rest;
-use FOS\RestBundle\View\View;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -70,7 +69,12 @@ class GnomeController extends AbstractRESTController
 
         $this->persistEntity($gnome);
 
-        return new JsonResponse($gnome, JsonResponse::HTTP_CREATED);
+        $headers = [
+            'Location' => '/api/v1/gnomes/' . $gnome->getId(),
+            'X-Resource-ID' => $gnome->getId(),
+        ];
+
+        return new JsonResponse($gnome, JsonResponse::HTTP_CREATED, $headers);
     }
 
     /**
@@ -95,6 +99,7 @@ class GnomeController extends AbstractRESTController
         }
 
         $this->persistEntity($gnome);
+        $gnome = $this->normalize($gnome);
 
         return JsonResponse::create($gnome);
     }

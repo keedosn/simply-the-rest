@@ -5,9 +5,6 @@ namespace App\Controller;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
-use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class AbstractRESTController extends AbstractFOSRestController
