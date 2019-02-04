@@ -8,7 +8,7 @@
 
 3. To run doctrine schema create tool run command:
 
-    $ docker-compose run php bin/console doc:sch:cre
+    $ docker-compose run --rm php bin/console doc:sch:cre
 
 4. App is running at http://localhost:81
 
@@ -52,5 +52,5 @@ Appendix 1: cURL Command to simulate REST API requests:
 Appendix 2: Running tests
 
 To run test execute following commands:
-    $ docker-compose run php bin/console --env=test doc:sch:cre    # To create sqlite db and structure
-    $ docker-compose run php bin/phpunit                           # To tun tests
+    $ docker-compose run --rm php bin/console --env=test doc:sch:cre    # To create sqlite db and structure
+    $ docker-compose run --rm php bin/phpunit                           # To tun tests
